@@ -12,8 +12,33 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    \App\Post::create([
+//        'title'=>'test title',
+//        'content'=>'test content'
+//    ]);
+
+//    $post = new \App\Post();
+//    $post->title = 'test title2';
+//    $post->content = 'test content2';
+//    $post->save();
+//    $post = \App\Post::find(1);
+//    $post->update([
+//        'title' => 'updated title',
+//        'content' => 'updated content',
+//    ]);
+//
+//    $posts = \App\Post::all();
+//    dd($posts);
+
+    $post = \App\Post::find(1);
+    foreach($post->comments as $comment) {
+        echo $comment->title.'<br>';
+    }
+
+
+//    return view('welcome');
 });
+
 Route::get('/home', 'HomeController@index');
 
 Route::get('/hello/{name?}', ['as'=>'hello.index', 'uses'=>'HelloController@index']);
